@@ -1,32 +1,37 @@
-# Tristan Martin - Personal Hub
+# Tristan Martin — Personal Landing Page
 
-A highly aesthetic, creative micro-landing page serving as the central hub for my personal brand and online presence.
+A minimalist, interactive personal landing page serving as the central hub for my online presence and creative work.
 
-## Goal and Function
+## Purpose
 
-The goal of this website is to provide a unified, visually striking gateway that directs visitors to my various creative and professional platforms. 
+A unified gateway that directs visitors to my creative and professional platforms through a clean, grid-based layout. Built with future scalability in mind for adding new links and projects.
 
-Currently, the landing page includes links to:
-- **Film Website:** [spatiallog.ca](https://spatiallog.ca)
-- **Instagram:** [@_tristan.martin_](https://www.instagram.com/_tristan.martin_/)
-- **LinkedIn:** [Tristan Martin](https://www.linkedin.com/in/tristan-martin-ca/)
+## Features
 
-It is built with future scalability in mind, allowing more social, professional, and creative links to be seamlessly integrated as my personal brand evolves.
+- **Interactive Background Grid** — A full-screen HTML Canvas grid that reacts to mouse/touch input with a gravity-pull warp effect and dynamic orange color highlighting
+- **Responsive 2×3 Grid Layout** — Headshot, bio, and link tiles that adapt between mobile and desktop
+- **Retina-Ready Canvas** — High-DPI scaling ensures crisp rendering on all displays
+
+## Links
+
+- [Spatial Log](https://spatiallog.ca) — 35mm Film Journal
+- [Instagram](https://www.instagram.com/_tristan.martin_/) — Photography & Life
+- [LinkedIn](https://www.linkedin.com/in/tristan-martin-ca/) — Career Journey
+
+## Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org) (App Router)
+- **Language:** TypeScript
+- **Styling:** [Tailwind CSS](https://tailwindcss.com) v4
+- **Fonts:** [Satoshi](https://www.fontshare.com/fonts/satoshi) (headings & body) + [Sentient](https://www.fontshare.com/fonts/sentient) (serif accents) via Fontshare
+- **Canvas:** Custom HTML5 Canvas component for the interactive background grid
+- **Deployment:** Vercel
 
 ## Getting Started
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with `create-next-app`.
-
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [http://localhost:3000](http://localhost:3000) to view it locally.
