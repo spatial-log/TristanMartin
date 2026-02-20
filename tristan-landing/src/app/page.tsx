@@ -8,6 +8,10 @@ export default function Home() {
     <div className="absolute inset-0 bg-[#FF5A00] opacity-0 group-hover:opacity-10 group-active:opacity-10 transition-opacity duration-300 pointer-events-none z-20"></div>
   );
 
+  const whiteOverlay = (
+    <div className="absolute inset-0 bg-white opacity-[0.08] pointer-events-none z-[1]"></div>
+  );
+
   return (
     <main className="min-h-screen relative flex flex-col items-center justify-center p-4 md:p-12 selection:bg-[#FF5A00] selection:text-white bg-[#FAFAFA] overflow-hidden">
       <InteractiveGrid />
@@ -36,17 +40,18 @@ export default function Home() {
             <p className="text-[11px] sm:text-[13px] text-[#666666] font-body leading-snug relative z-10">
               Amateur developer and analog photographer based in Canada.
               <span className="block h-1" />
-              Exploring new mediums to express my creativity while building a career in the Architecture industry.
+              Exploring new mediums to express my creativity while building a career in architecture operations.
             </p>
           </div>
 
           {/* Square 3: Spatiallog */}
           <a href="https://spatiallog.ca" target="_blank" rel="noopener noreferrer" className="w-[42vw] h-[42vw] sm:w-48 sm:h-48 relative group overflow-hidden bg-[#F05A00] p-3 sm:p-5 flex flex-col items-center justify-between text-center transition-all duration-300 hover:bg-[#E65100] hover:-translate-y-1 cursor-pointer rounded-sm shadow-sm">
+            {whiteOverlay}
             <span className="text-base sm:text-lg font-body font-medium text-white relative z-10">Spatial Log</span>
 
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
               {/* Inline SVG matching the original TM circle logo */}
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 sm:w-16 sm:h-16 text-white opacity-80 group-hover:opacity-100 transition-all duration-300" viewBox="0 0 100 100" fill="none">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 sm:w-20 sm:h-20 text-white opacity-80 group-hover:opacity-100 transition-all duration-300" viewBox="0 0 100 100" fill="none">
                 <text x="50" y="62" textAnchor="middle" fill="currentColor" fontSize="42" fontFamily="serif" fontWeight="500">TM</text>
               </svg>
             </div>
@@ -57,6 +62,7 @@ export default function Home() {
 
           {/* Square 4: Instagram */}
           <a href="https://instagram.com/_tristan.martin_" target="_blank" rel="noopener noreferrer" className="w-[42vw] h-[42vw] sm:w-48 sm:h-48 relative group overflow-hidden bg-[#F05A00] p-3 sm:p-5 flex flex-col items-center justify-between text-center transition-all duration-300 hover:bg-[#E65100] hover:-translate-y-1 cursor-pointer rounded-sm shadow-sm">
+            {whiteOverlay}
             <span className="text-base sm:text-lg font-body font-medium text-white relative z-10">Instagram</span>
 
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
@@ -74,6 +80,7 @@ export default function Home() {
 
           {/* Square 5: Linkedin */}
           <a href="https://www.linkedin.com/in/tristan-martin-ca/" target="_blank" rel="noopener noreferrer" className="w-[42vw] h-[42vw] sm:w-48 sm:h-48 relative group overflow-hidden bg-[#F05A00] p-3 sm:p-5 flex flex-col items-center justify-between text-center transition-all duration-300 hover:bg-[#E65100] hover:-translate-y-1 cursor-pointer rounded-sm shadow-sm">
+            {whiteOverlay}
             <span className="text-base sm:text-lg font-body font-medium text-white relative z-10">LinkedIn</span>
 
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
@@ -88,6 +95,7 @@ export default function Home() {
 
           {/* Square 6: Coming Soon */}
           <div className="w-[42vw] h-[42vw] sm:w-48 sm:h-48 relative group overflow-hidden bg-[#F05A00] opacity-80 p-3 sm:p-5 flex flex-col items-center justify-center text-center rounded-sm transition-all duration-300 shadow-sm">
+            {whiteOverlay}
             <span className="text-sm sm:text-base font-body font-medium text-white/90 relative z-10">Coming Soon.</span>
             {hoverOverlay}
           </div>
