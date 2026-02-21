@@ -38,7 +38,7 @@ export default function Home() {
               Hi, I'm Tristan.
             </h1>
             <p className="text-[11px] sm:text-[13px] text-[#666666] font-body leading-snug relative z-10">
-              Amateur developer and analog photographer based in Canada.
+              Creative Technologist and analog photographer based in Canada.
               <span className="block h-1" />
               Exploring new mediums to express my creativity while building a career in architecture operations.
             </p>
