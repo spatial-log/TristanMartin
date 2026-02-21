@@ -9,7 +9,7 @@ const geistSans = Geist({
 
 export const metadata: Metadata = {
   title: "Tristan Martin",
-  description: "Creative Technologist and analog photographer based in Canada. Exploring new mediums to express my creativity while building a career in architecture operations.",
+  description: "Creative technologist and analog photographer based in Canada. Exploring new mediums to express my creativity while building a career in architecture operations.",
 };
 
 export default function RootLayout({
