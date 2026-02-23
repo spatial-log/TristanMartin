@@ -28,8 +28,10 @@ export default function Home() {
               alt="Tristan Martin"
               width={192}
               height={192}
-              className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500 rounded-sm relative z-10"
+              className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500 rounded-sm relative z-10 select-none pointer-events-none"
               priority
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
             />
           </div>
 
