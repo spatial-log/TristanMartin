@@ -100,9 +100,9 @@ export default function Home() {
       </div>
 
       {/* Footer text */}
-      <div className="absolute bottom-4 sm:bottom-6 w-full z-10 flex flex-col items-center gap-1 text-center opacity-60 hover:opacity-100 transition-opacity pointer-events-none">
-        <p className="text-[10px] sm:text-xs font-body tracking-widest uppercase text-[#666666]">Tristan Martin © {new Date().getFullYear()}</p>
-        <a href="mailto:hello@tristanmartin.ca" className="text-[10px] sm:text-xs font-body tracking-widest text-[#666666] hover:text-[#FF5A00] transition-colors pointer-events-auto">
+      <div className="absolute bottom-4 sm:bottom-6 w-full z-10 flex flex-col items-center gap-1 text-center pointer-events-none">
+        <p className="text-[10px] sm:text-xs font-body tracking-widest uppercase text-[#666666] opacity-60">Tristan Martin © {new Date().getFullYear()}</p>
+        <a href="mailto:hello@tristanmartin.ca" className="text-[10px] sm:text-xs font-body tracking-widest text-[#666666] opacity-60 hover:opacity-100 hover:text-[#FF5A00] transition-all pointer-events-auto">
           hello@tristanmartin.ca
         </a>
       </div>
