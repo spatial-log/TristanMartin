@@ -42,6 +42,7 @@ export default function Home() {
                 src="/tristan-photo.png"
                 alt="Tristan Martin Portrait"
                 fill
+                sizes="(max-width: 640px) 128px, 192px"
                 className="object-cover object-bottom"
                 priority
                 draggable={false}
