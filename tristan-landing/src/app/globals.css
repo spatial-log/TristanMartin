@@ -1,4 +1,4 @@
-@import url('https://api.fontshare.com/v2/css?f[]=sentient@300,500&f[]=satoshi@400,500,700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=sentient@300,500,700&f[]=satoshi@400,500,700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -9,7 +9,8 @@
   --border-color: #E5E5E5;
 
   /* Accent Color */
-  --accent-orange: #FF5A00;
+  --accent-blue: #0A2540;
+  --accent-blue-rgb: 10, 37, 64;
 
   --font-heading: 'Sentient', serif;
   --font-body: 'Satoshi', sans-serif;
@@ -43,6 +44,23 @@ h6 {
 
 /* Custom Selection */
 ::selection {
-  background: var(--accent-orange);
+  background: #ea580c;
   color: white;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

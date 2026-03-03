@@ -1,108 +1,116 @@
 "use client";
 
 import Image from 'next/image';
-import InteractiveGrid from '../components/InteractiveGrid';
-import MagneticSquare from '../components/MagneticSquare';
+import PillButton from "@/components/PillButton";
+import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Home() {
-  const hoverOverlay = (
-    <div className="absolute inset-0 bg-[#FF5A00] opacity-0 group-hover:opacity-10 group-active:opacity-10 transition-opacity duration-300 pointer-events-none z-20"></div>
-  );
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const [bioWidth, setBioWidth] = useState<number | undefined>(undefined);
 
-  const whiteOverlay = (
-    <div className="absolute inset-0 bg-white opacity-[0.08] pointer-events-none z-[1]"></div>
-  );
+  useEffect(() => {
+    const measure = () => {
+      if (titleRef.current) {
+        setBioWidth(titleRef.current.offsetWidth + 20);
+      }
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        delayChildren: 0.2,
+        staggerChildren: 0.12,
+      },
+    },
+  };
 
   return (
-    <main className="min-h-screen relative flex flex-col items-center justify-center p-4 md:p-12 selection:bg-[#FF5A00] selection:text-white bg-[#FAFAFA] overflow-hidden">
-      <InteractiveGrid />
-      <div className="z-10 animate-fade-in-up w-full max-w-fit mx-auto">
+    <main className="h-dvh relative flex flex-col items-center justify-center p-2 sm:p-4 md:p-12 selection:bg-[#ea580c] selection:text-white bg-[#FAFAFA] overflow-hidden">
+      <div className="z-10 w-full max-w-lg mx-auto flex flex-col items-center gap-6 sm:gap-8 pb-0 sm:pb-16">
 
-        {/* Simple 6 square grid (2x3) */}
-        <div className="grid grid-cols-2 gap-4 md:gap-6">
-
-          {/* Square 1: Headshot (transparent bg) */}
-          <div className="w-[42vw] h-[42vw] sm:w-48 sm:h-48 relative group overflow-hidden flex items-center justify-center transition-transform rounded-sm">
-            <Image
-              src="/tristan-photo.png"
-              alt="Tristan Martin"
-              width={192}
-              height={192}
-              className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500 rounded-sm relative z-10 select-none pointer-events-none"
-              priority
-              draggable={false}
-              onContextMenu={(e) => e.preventDefault()}
-            />
+        {/* Header Profile Section */}
+        <div className="animate-fade-in-up flex flex-col items-center text-center gap-3 sm:gap-6">
+          <div className="relative flex flex-col items-center justify-end">
+            <div className="w-32 h-32 sm:w-48 sm:h-48 relative overflow-hidden flex items-end justify-center rounded-t-full">
+              <Image
+                src="/tristan-photo.png"
+                alt="Tristan Martin Portrait"
+                fill
+                className="object-cover object-bottom"
+                priority
+                draggable={false}
+              />
+            </div>
+            {/* Thin Flat Orange Baseline */}
+            <div className="w-36 sm:w-56 h-[2px] bg-[#ea580c] relative z-10"></div>
           </div>
 
-          {/* Square 2: Description/bio (transparent bg) */}
-          <div className="w-[42vw] h-[42vw] sm:w-48 sm:h-48 relative group overflow-hidden p-3 pb-0 sm:p-5 sm:pb-0 flex flex-col justify-end transition-transform rounded-sm">
-            <h1 className="text-lg sm:text-xl font-body text-[#1A1A1A] font-bold leading-tight mb-2 relative z-10">
-              Hi, I'm Tristan.
+          <div className="flex flex-col gap-2 sm:gap-3 px-4 items-center">
+            <h1 ref={titleRef} className="text-3xl sm:text-4xl font-serif text-[#1A1A1A] font-semibold leading-tight mt-1 sm:mt-2">
+              Hi, I'm Tristan<span className="text-[#ea580c]">.</span>
             </h1>
-            <p className="text-[11px] sm:text-[13px] text-[#666666] font-body leading-snug relative z-10">
-              Creative technologist and analog photographer based in Canada.
-              <span className="block h-1" />
-              Exploring new mediums to express my creativity while building a career in architecture operations.
+            <p
+              className="text-xs sm:text-sm text-[#666666] font-body leading-tight flex flex-col gap-2 text-center transition-opacity duration-300"
+              style={bioWidth ? { maxWidth: bioWidth, opacity: 1 } : { opacity: 0 }}
+            >
+              <span>Creative operations specialist and analog photographer based in Canada.</span>
             </p>
           </div>
-
-          {/* Square 3: Spatiallog */}
-          <MagneticSquare
-            href="https://spatiallog.ca"
-            title="Spatial Log"
-            subtitle="35mm Film Journal"
-            icon={
-              <Image
-                src="/spatiallog-icon.png"
-                alt="Spatial Log"
-                width={200}
-                height={200}
-                className="w-full h-full object-contain scale-[1.35]"
-              />
-            }
-          />
-
-          {/* Square 4: Instagram */}
-          <MagneticSquare
-            href="https://instagram.com/_tristan.martin_"
-            title="Instagram"
-            subtitle="Photography & Life"
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-full h-full scale-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            }
-          />
-
-          {/* Square 5: Linkedin */}
-          <MagneticSquare
-            href="https://www.linkedin.com/in/tristan-martin-ca/"
-            title="LinkedIn"
-            subtitle="Career Journey"
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-full h-full scale-[0.85]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            }
-          />
-
-          {/* Square 6: Coming Soon */}
-          <div className="w-[42vw] h-[42vw] sm:w-48 sm:h-48 relative group overflow-hidden bg-[#F05A00] opacity-80 p-3 sm:p-5 flex flex-col items-center justify-center text-center rounded-sm transition-all duration-300 shadow-sm">
-            {whiteOverlay}
-            <span className="text-sm sm:text-base font-body font-medium text-white/90 relative z-10">Coming Soon.</span>
-            {hoverOverlay}
-          </div>
-
         </div>
+
+        {/* Links Container */}
+        <div className="w-full flex justify-center w-full px-2 sm:px-0">
+          <div className="flex flex-col w-full max-w-[320px] sm:max-w-sm">
+            {/* Static Top Orange Border */}
+            <div className="w-full h-[1.2px] bg-[#ea580c]"></div>
+
+            <motion.div
+              className="flex flex-col w-full overflow-hidden"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+
+              <PillButton
+                href="https://spatiallog.ca"
+                title="Spatial Log"
+                subtitle="35mm Film Journal"
+                logoSrc="/sl-logo-bl.png"
+              />
+
+              <PillButton
+                href="https://instagram.com/_tristan.martin_"
+                title="Instagram"
+                subtitle="Photography & Life"
+                logoSrc="/ig-logo-bl.png"
+              />
+
+              <PillButton
+                href="https://linkedin.com/in/tristan-martin-ca"
+                title="LinkedIn"
+                subtitle="Career Journey"
+                logoSrc="/li-logo-bl.png"
+                isBottom={true}
+              />
+
+            </motion.div>
+
+            {/* Bottom Orange Border - appears after last card animates in */}
+          </div>
+        </div>
+
       </div>
 
       {/* Footer text */}
-      <div className="absolute bottom-4 sm:bottom-6 w-full z-10 flex flex-col items-center gap-1 text-center pointer-events-none">
-        <p className="text-[10px] sm:text-xs font-body tracking-widest uppercase text-[#666666] opacity-60">Tristan Martin © {new Date().getFullYear()}</p>
-        <a href="mailto:hello@tristanmartin.ca" className="text-[10px] sm:text-xs font-body tracking-widest text-[#666666] opacity-60 hover:opacity-100 hover:text-[#FF5A00] transition-all pointer-events-auto">
+      <div className="absolute bottom-2 sm:bottom-6 w-full z-10 flex flex-col items-center gap-1 text-center pointer-events-none">
+        <p className="text-[10px] sm:text-xs font-body tracking-widest text-[#666666] opacity-60">tristan martin © {new Date().getFullYear()}</p>
+        <a href="mailto:hello@tristanmartin.ca" className="text-[10px] sm:text-xs font-body tracking-widest text-[#666666] opacity-60 hover:opacity-100 hover:text-[#ea580c] transition-all pointer-events-auto">
           hello@tristanmartin.ca
         </a>
       </div>
