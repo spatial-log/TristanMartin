@@ -50,7 +50,7 @@ export default function PillButton({ href, title, subtitle, logoSrc, isTop, isBo
 
                 {/* Text Container */}
                 <div className="flex flex-col flex-grow z-10 pr-4">
-                    <span className="text-base font-body font-normal text-[#1A1A1A]">{title}</span>
+                    <span className="text-base font-body font-medium text-[#1A1A1A]">{title}</span>
                     <span className="text-xs text-[#666666] font-body line-clamp-1">{subtitle}</span>
                 </div>
             </motion.a>

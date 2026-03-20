@@ -63,7 +63,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-2 sm:gap-3 px-4 items-center">
-            <h1 ref={titleRef} className="text-3xl sm:text-4xl font-serif text-[#1A1A1A] font-semibold leading-tight mt-1 sm:mt-2">
+            <h1 ref={titleRef} className="text-3xl sm:text-4xl font-serif text-[#1A1A1A] font-normal leading-tight mt-1 sm:mt-2">
               Hi, I&apos;m Tristan<span className="text-[#ea580c]">.</span>
             </h1>
             <p
