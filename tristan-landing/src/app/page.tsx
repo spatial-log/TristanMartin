@@ -7,17 +7,27 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const firstBioRef = useRef<HTMLSpanElement>(null);
   const [bioWidth, setBioWidth] = useState<number | undefined>(undefined);
+  const [firstLineWidth, setFirstLineWidth] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const measure = () => {
       if (titleRef.current) {
         setBioWidth(titleRef.current.offsetWidth + 20);
       }
+      if (firstBioRef.current) {
+        setFirstLineWidth(firstBioRef.current.offsetWidth);
+      }
     };
     measure();
+    // Add a small delay to ensure the first paragraph has wrapped before measuring its width
+    const timer = setTimeout(measure, 100);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      clearTimeout(timer);
+    };
   }, []);
 
   const containerVariants = {
@@ -54,13 +64,16 @@ export default function Home() {
 
           <div className="flex flex-col gap-2 sm:gap-3 px-4 items-center">
             <h1 ref={titleRef} className="text-3xl sm:text-4xl font-serif text-[#1A1A1A] font-semibold leading-tight mt-1 sm:mt-2">
-              Hi, I'm Tristan<span className="text-[#ea580c]">.</span>
+              Hi, I&apos;m Tristan<span className="text-[#ea580c]">.</span>
             </h1>
             <p
               className="text-xs sm:text-sm text-[#666666] font-body leading-tight flex flex-col gap-2 text-center transition-opacity duration-300"
               style={bioWidth ? { maxWidth: bioWidth, opacity: 1 } : { opacity: 0 }}
             >
-              <span>Creative operations specialist and analog photographer based in Canada.</span>
+              <span ref={firstBioRef}>Creative operations specialist and analog photographer based in Canada.</span>
+              <span style={firstLineWidth ? { maxWidth: firstLineWidth, margin: '0 auto' } : {}}>
+                Exploring new mediums to express my creativity while building a career in architecture operations.
+              </span>
             </p>
           </div>
         </div>
