@@ -70,9 +70,8 @@ export default function Home() {
               className="text-xs sm:text-sm text-[#666666] font-body leading-tight flex flex-col gap-2 text-center transition-opacity duration-300"
               style={bioWidth ? { maxWidth: bioWidth, opacity: 1 } : { opacity: 0 }}
             >
-              <span ref={firstBioRef}>Creative operations specialist and analog photographer based in Canada.</span>
+              <span ref={firstBioRef}>Creative operations builder and analog photographer based in Canada.</span>
               <span style={firstLineWidth ? { maxWidth: firstLineWidth, margin: '0 auto' } : {}}>
-                Exploring new mediums to express my creativity while building a career in architecture operations.
               </span>
             </p>
           </div>
